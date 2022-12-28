@@ -34,7 +34,7 @@ export function OrderModal({ visible, order, onClose }: OrderModalProps) {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [onClose]);
   return (
     <Overlay>
       <ModalBody>
