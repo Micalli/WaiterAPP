@@ -2,22 +2,23 @@ import { Request, Response } from "express";
 
 import { Order } from "../../models/Order";
 
-export async function changeOrderStatus(req: Request, res: Response) {
+export async function changeOrderStatus(request: Request, response: Response) {
   try {
-    const { orderId } = req.params;
-    const { status } = req.body;
+    const { orderId } = request.params;
+
+    const { status } = request.body;
+
     if (!["WAITING", "IN_PRODUCTION", "DONE"].includes(status)) {
-      return res.status(400).json({
+      return response.status(400).json({
         error: "Status deve ser um destes: WAITING, IN_PRODUCTION, DONE",
       });
     }
 
-    await Order.findByIdAndUpdate(orderId, {
-      status,
-    });
+    await Order.findByIdAndUpdate(orderId, { status });
 
-    res.status(204);
+    return response.sendStatus(204);
   } catch (error) {
-    res.sendStatus(500);
+    console.error(error);
+    return response.sendStatus(500);
   }
 }

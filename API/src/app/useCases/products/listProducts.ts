@@ -7,6 +7,7 @@ export async function listProducts(req: Request, res: Response) {
 
     res.json(products);
   } catch (error) {
+    console.log("LOG  listProducts  error", error);
     res.sendStatus(500);
   }
 }

@@ -119,6 +119,16 @@ export const Actions = styled.footer`
   flex-direction: column;
   margin-top: 32px;
 
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    /* &:hover {
+      /* pointer-events: none;
+    } */
+  }
+
   .primary {
     background: #333333;
     border-radius: 48px;
@@ -131,6 +141,9 @@ export const Actions = styled.footer`
     gap: 8px;
     transition: 0.2s;
 
+    &:disabled:hover {
+      background: #333333;
+    }
     &:hover {
       background: #444444;
       transition: 0.2s;
@@ -144,6 +157,9 @@ export const Actions = styled.footer`
     border: 0;
     margin-top: 12px;
     transition: 0.2s;
+    &:disabled:hover {
+      background: transparent;
+    }
 
     &:hover {
       color: #fc3a3d;
